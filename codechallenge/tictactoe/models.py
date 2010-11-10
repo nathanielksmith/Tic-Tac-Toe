@@ -8,6 +8,9 @@ class GameState():
     def update(self, row, col, piece):
         self.state[row][col] = piece
 
+    def empty(self, row, col):
+        return bool(self.state[row][col])
+
 class Board(models.Model):
     state  = PickledObjectField(default=GameState())
     name   = models.CharField(default="a tic tac toe game", max_length=50) 
