@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.http import Http404
 from django.shortcuts import redirect
+from django.shortcuts import render_to_response
 from tictactoe.models import *
 import re
 import time
@@ -17,7 +18,7 @@ def index(request, board_id=None):
     except Board.DoesNotExist:
         raise Http404
 
-    return HttpResponse(board.name + " " + str(board.id))
+    return render_to_response('tictactoe/index.html', {'board':board})
 
 
 def move(request, board_id, row, col):
