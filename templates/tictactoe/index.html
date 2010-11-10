@@ -9,7 +9,7 @@
         {% for row in state %}
         <tr>
             {% for col in row %}
-            <td>{{ col }}</td>
+            <td><a href="{{board.get_absolute_url}}/move/{{forloop.parentloop.counter0}}/{{forloop.counter0}}">{{ col }}</a></td>
             {% endfor %}
         </tr>
         {% endfor %}
