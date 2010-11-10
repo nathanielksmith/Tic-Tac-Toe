@@ -8,6 +8,12 @@ class GameState():
     def update(self, row, col, piece):
         self.state[row][col] = piece
 
+    def center_row(self):
+        return 1
+
+    def center_col(self):
+        return 1
+
     def empty(self, row, col):
         return bool(self.state[row][col])
 
