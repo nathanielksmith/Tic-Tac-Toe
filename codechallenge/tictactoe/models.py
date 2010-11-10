@@ -10,7 +10,7 @@ class GameState():
 
 class Board(models.Model):
     state = PickledObjectField(default=GameState())
-    name  = models.CharField(default="I must break you.", max_length=50) 
+    name  = models.CharField(default="a tic tac toe game", max_length=50) 
 
     def get_absolute_url(self):
         return r'/tictactoe/board/%i' % self.id
