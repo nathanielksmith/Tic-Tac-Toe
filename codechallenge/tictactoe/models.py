@@ -9,8 +9,10 @@ class GameState():
         self.state[row][col] = piece
 
 class Board(models.Model):
-    state = PickledObjectField(default=GameState())
-    name  = models.CharField(default="a tic tac toe game", max_length=50) 
+    state  = PickledObjectField(default=GameState())
+    name   = models.CharField(default="a tic tac toe game", max_length=50) 
+    over   = models.BooleanField()
+    status = models.CharField(max_length=20, choices=['tie', 'I win'])
 
     def get_absolute_url(self):
         return r'/tictactoe/board/%i' % self.id
