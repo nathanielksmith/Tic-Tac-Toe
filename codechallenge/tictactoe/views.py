@@ -22,8 +22,14 @@ def index(request, board_id=None):
 
 
 def move(request, board_id, row, col):
-    # find board
-    # update with user move
-    # save
-    # return board
-    pass
+    try:
+        board = Board.objects.get(pk=board_id)
+    except Board.DoesNotExist:
+        raise Http404
+
+    row = int(row)
+    col = int(col)
+
+    board.user_move(row, col)
+    board.save()
+    return redirect(board)
