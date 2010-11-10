@@ -3,10 +3,7 @@ from picklefield.fields import PickledObjectField
 
 class GameState():
     def __init__(self):
-        self._state = ((0,0,0),(0,0,0),(0,0,0))
-
-    def state(self):
-        return self._state
+        self.state = [[0,0,0],[0,0,0],[0,0,0]]
 
 class Board(models.Model):
     state = PickledObjectField(default=GameState())

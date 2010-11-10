@@ -6,21 +6,13 @@
 <body>
     <h1>{{ board.name }}</h1>
     <table id="board">
+        {% for row in state %}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        {% endfor %}
     </table>
 </body>
 </html>

@@ -9,7 +9,7 @@ import time
 def index(request, board_id=None):
     if board_id == None:
         name = "Game " + re.sub(r'\d+\.', '', str(time.time()))
-        board = Board(name=name, state=GameState())
+        board = Board(name=name)
         board.save()
         return redirect(board)
     
@@ -18,7 +18,7 @@ def index(request, board_id=None):
     except Board.DoesNotExist:
         raise Http404
 
-    return render_to_response('tictactoe/index.html', {'board':board})
+    return render_to_response('tictactoe/index.html', {'board':board, 'state':board.state.state})
 
 
 def move(request, board_id, row, col):
