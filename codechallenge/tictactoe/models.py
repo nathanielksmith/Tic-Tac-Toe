@@ -15,7 +15,7 @@ class GameState():
         return 1
 
     def empty(self, row, col):
-        return bool(self.state[row][col])
+        return not bool(self.state[row][col])
 
 class Board(models.Model):
     state  = PickledObjectField(default=GameState())
