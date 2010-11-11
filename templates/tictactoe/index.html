@@ -11,6 +11,24 @@
             font-family: 'Neuton', arial, serif;
         }
 
+        body div:last-child {
+            font-size:80%;
+            margin-top:10px;
+            text-align:center;
+            font-weight:bold;
+        }
+            body div:last-child a {
+                text-decoration:none;
+                color:rgb(20,10,10);
+            }
+            body div:last-child a:visited {
+                color:rgb(20,10,10);
+            }
+            body div:last-child a:hover {
+                color:rgb(100, 80, 80);
+            }
+
+
         h1,h2 {
             text-align:center;
         }
@@ -81,5 +99,8 @@
         </tr>
         {% endfor %}
     </table>
+    <div>
+        <a href="{% url tictactoe.views.index %}">New Game</a>
+    </div>
 </body>
 </html>
