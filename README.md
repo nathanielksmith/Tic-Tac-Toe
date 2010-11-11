@@ -7,11 +7,11 @@ To play, to go [saytheidea.org/tictactoe](http://saytheidea.org/tictactoe).
 
 Code
 ----
-Written with Django 1.2.3. Uses [django-picklefield](http://djangopackages.com/packages/p/django-picklefield/) to store game state in a SQLite3 database.
+Uses Python 2.6. Written with Django 1.2.3. Uses [django-picklefield](http://djangopackages.com/packages/p/django-picklefield/) to store game state in a SQLite3 database.
 
 Deployment
 ----------
-Running on gunicorn behind ngnix on a personal rackspace instance.
+Runs on gunicorn behind ngnix on a personal rackspace instance. Has a basic requirements.txt file to help deploy within a virtual env.
 
 Design
 ------
