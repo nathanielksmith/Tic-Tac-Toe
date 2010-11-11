@@ -82,6 +82,8 @@ class Board(models.Model):
 
         if row is not None and col is not None:
             self.state.update(row, col, 2)
+            self.over   = True
+            self.status = 'computer' 
             return
 
         # Are they about to win?
@@ -98,4 +100,10 @@ class Board(models.Model):
 
         # Fall back to arbitrary
         row, col = self.state.first_free()
-        self.state.update(row,col, 2)
+        if row is not None and col is not None:
+            self.state.update(row,col, 2)
+        else:
+            self.over = True
+            self.status = 'tie'
+
+
