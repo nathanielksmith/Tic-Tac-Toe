@@ -77,33 +77,33 @@ class Board(models.Model):
         if not self.state.empty(user_row,user_col):
             return
 
-        self.state.update(user_row, user_col, 1)
+        self.state.update(user_row, user_col,'X')
 
         # Can I win?
-        row, col = self.state.could_win(2)
+        row, col = self.state.could_win('O')
 
         if row is not None and col is not None:
-            self.state.update(row, col, 2)
+            self.state.update(row, col, 'O')
             self.over   = True
             self.status = 'computer' 
             return
 
         # Are they about to win?
-        row, col = self.state.could_win(1)
+        row, col = self.state.could_win('X')
 
         if row is not None and col is not None:
-            self.state.update(row, col, 2)
+            self.state.update(row, col, 'O')
             return
 
         # Is the center free?
         if self.state.empty(self.state.center_row(), self.state.center_col()):
-            self.state.update(self.state.center_row(), self.state.center_col(), 2)
+            self.state.update(self.state.center_row(), self.state.center_col(), 'O')
             return
 
         # Fall back to arbitrary
         row, col = self.state.first_free()
         if row is not None and col is not None:
-            self.state.update(row,col, 2)
+            self.state.update(row,col, 'O')
         else:
             self.over = True
             self.status = 'tie'
