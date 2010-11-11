@@ -56,7 +56,7 @@
 <body>
     <h1>Would you like to play a game?</h1>
     {% if board.over %}
-        <h2>Game over! {{ board.status }}</h2>
+        <h2>Game over! {{ board.get_status_display }}</h2>
     {% endif %}
     <table id="board">
         {% for row in state %}
