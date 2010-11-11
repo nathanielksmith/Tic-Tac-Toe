@@ -28,7 +28,7 @@ class GameState():
                     return (r,c)
 
         return (None, None)
-    
+
     def could_win(self, piece):
         # inspired by http://stackoverflow.com/questions/1056316/algorithm-for-determining-tic-tac-toe-game-over-java/1056352#1056352
         for r in range(0,3):
@@ -55,7 +55,7 @@ class GameState():
                 is_empty  = [(i,c) for i in range(0,3) if self.empty(i,c)]
                 if len(has_piece) == 2 and len(is_empty) == 1:
                     return is_empty.pop()
-                    
+
                 # check col
                 has_piece = [(r,i) for i in range(0,3) if self.piece_at(r,i) == piece]
                 is_empty  = [(r,i) for i in range(0,3) if self.empty(r,i)]
@@ -66,7 +66,7 @@ class GameState():
 
 class Board(models.Model):
     state  = PickledObjectField(default=GameState())
-    name   = models.CharField(default="a tic tac toe game", max_length=50) 
+    name   = models.CharField(default="a tic tac toe game", max_length=50)
     over   = models.BooleanField()
     status = models.CharField(max_length=20, choices=(('tie', "It's a tie."), ('computer', 'Computer wins!')))
 
@@ -85,7 +85,7 @@ class Board(models.Model):
         if row is not None and col is not None:
             self.state.update(row, col, 'O')
             self.over   = True
-            self.status = 'computer' 
+            self.status = 'computer'
             return
 
         # Are they about to win?

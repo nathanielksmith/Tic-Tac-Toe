@@ -12,7 +12,7 @@ def index(request, board_id=None):
         board = Board(name=name)
         board.save()
         return redirect(board)
-    
+
     try:
         board = Board.objects.get(pk=board_id)
     except Board.DoesNotExist:
