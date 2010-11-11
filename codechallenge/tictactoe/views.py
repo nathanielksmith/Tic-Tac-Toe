@@ -7,6 +7,8 @@ import re
 import time
 
 def index(request, board_id=None):
+    '''The main page of the game. If no board id is supplied, a new game is
+    created and the user is redirected to the new board.'''
     if board_id == None:
         name = "Game " + re.sub(r'\d+\.', '', str(time.time()))
         board = Board(name=name)
@@ -22,6 +24,8 @@ def index(request, board_id=None):
 
 
 def move(request, board_id, row, col):
+    '''Handles a user move. Tells the board to update itself, then redirects
+    back to the index to redisplay the board.'''
     try:
         board = Board.objects.get(pk=board_id)
     except Board.DoesNotExist:
