@@ -35,9 +35,11 @@
                 border-top:2px solid rgb(20,10,10);
                 border-bottom:2px solid rgb(20,10,10);
             }
+            {% if not board.over %}
             tr td.empty:hover {
                 background-color: rgb(150,120,120);
             }
+            {% endif %}
             tr td {
                 height:100px;
                 width:100px;
@@ -68,7 +70,11 @@
                 {% if board.over %}
                     {{ col|default:"" }}
                 {% else %}
-                    <a href="{{board.get_absolute_url}}/move/{{forloop.parentloop.counter0}}/{{forloop.counter0}}">{{ col|default:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"}}</a>
+                    {% if col %}
+                        {{ col }}
+                    {% else %}
+                        <a href="{{board.get_absolute_url}}/move/{{forloop.parentloop.counter0}}/{{forloop.counter0}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    {% endif %}
                 {% endif %}
             </td>
             {% endfor %}
