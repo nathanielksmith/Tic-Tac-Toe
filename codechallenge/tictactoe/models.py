@@ -26,6 +26,8 @@ class GameState():
             for c in range(0,2):
                 if self.empty(r,c):
                     return (r,c)
+
+        return (None, None)
     
     def could_win(self, piece):
         # inspired by http://stackoverflow.com/questions/1056316/algorithm-for-determining-tic-tac-toe-game-over-java/1056352#1056352
