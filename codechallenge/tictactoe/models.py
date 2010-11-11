@@ -107,5 +107,3 @@ class Board(models.Model):
         else:
             self.over = True
             self.status = 'tie'
-
-
